@@ -41,16 +41,15 @@
         },
         created() {
             this.$http.get("http://localhost:8000/v1/cities?type=guess").then((res) => {
+                console.log(res)
                 this._data.guessCity = res.body.name
             });
             this.$http.get("http://localhost:8000/v1/cities?type=hot").then((res) => {
-                // console.log(res.body)
+                //  console.log(res.body)
                 this._data.hotCity = res.body
             });
             this.$http.get("http://localhost:8000/v1/cities?type=group").then((res) => {
-                console.log(res.data)
-
-
+                // console.log(res.data)
                 function objKeySort(obj) { //排序的函数
                     var newkey = Object.keys(obj).sort();　　 //先用Object内置类的keys方法获取要排序对象的属性名，再利用Array原型上的sort方法对获取的属性名进行排序，newkey是一个数组
                     var newObj = {}; //创建一个新的对象，用于存放排好序的键值对
@@ -66,7 +65,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scope>
     .top {
         background: #3190e8;
         height: 45px;
