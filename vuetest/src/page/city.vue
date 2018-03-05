@@ -1,10 +1,11 @@
 <template>
     <div>
         <div class="top">
-            <span class="fl"><</span>
+            <router-link to="/home"> <span class="fl"><</span></router-link>
+           
+            <router-link to="/home"> <span class="fr">切换城市</span></router-link>
             
-            <span class="fr">切换城市</span>
-            <p>上海</p>
+            <p>{{cityName}}</p>
         </div>
         <div class="city-search">
             <input type="" name="" v-model="value" placeholder="输入学校，商务楼，地址">
@@ -12,7 +13,7 @@
         </div>
         <div class="search_History">
             <ul>
-                <li v-for = "key in searchResult">
+                <li v-for = "key in searchResult"> 
                     <h4>{{key.name}}</h4>
                     <p>{{key.address}}</p>
                 </li>
@@ -25,12 +26,20 @@
         data() {
             return {
                 searchResult: '',
-                value: '22'
+                value: '',
+                cityId: '',
+                cityName: ''
             }
+        },
+        created() {
+            this._data.cityId = this.$route.query.id;
+            this._data.cityName = this.$route.query.city;
+            console.log(this._data.cityId)
+            console.log(this._data.cityName)
         },
         methods: {
             postpois(value) {
-                this.$http.get('http://localhost:8000/v1/pois?type=search&city_id=11&keyword=' + value + '').then((res) => {
+                this.$http.get('http://localhost:8000/v1/pois?type=search&city_id=' + this._data.cityId + '&keyword=' + value + '').then((res) => {
                     console.log(res)
                     if (res.body.message == '参数错误') {
                         this._data.searchResult = ''
@@ -52,6 +61,7 @@
         padding: 0px 10px;
         span {
             color: #fff;
+            font-size: 14px;
         }
         p {
             font-size: 18px;

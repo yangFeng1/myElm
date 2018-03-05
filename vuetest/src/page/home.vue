@@ -10,20 +10,23 @@
                 <span class="fr">定位不准时，请在城市列表中选择</span>
            </div>
            <div class="city_recommend">
-               <span>{{guessCity}}</span>
+               <router-link :to="{path:'city',query: {id:guessId,city:guessCity}}"> <span>{{guessCity}}</span></router-link>
+              
                <span class="fr">></span>
            </div>
            <div class="city_hot clear">
                 <div class="title">热门城市</div>
                 <ul>
-                    <li v-for="item in hotCity">{{item.name}}</li>
+                    <router-link v-for="item in hotCity" :to="{path:'city',query: {id:item.id,city:item.name}}"><li >{{item.name}}</li></router-link>
+                    
                 </ul>
            </div>
            <div class="city_group clear">
                 <div class="item clear" v-for="(value,key,index) in groupcity">
                     <h4>{{key}}</h4>
                     <ul>
-                        <li v-for="item in value" :uid="item.id">{{item.name}}</li>
+                            <router-link  v-for="item in value" :to="{path:'city',query: {id:item.id,city:item.name}}"><li  :uid="item.id">{{item.name}}</li></router-link>
+                        
                     </ul>
                 </div>
            </div>
@@ -35,6 +38,7 @@
         data() {
             return {
                 guessCity: '',
+                guessId: '',
                 hotCity: '',
                 groupcity: ''
             }
@@ -43,6 +47,7 @@
             this.$http.get("http://localhost:8000/v1/cities?type=guess").then((res) => {
                 console.log(res)
                 this._data.guessCity = res.body.name
+                this._data.guessId = res.body.id
             });
             this.$http.get("http://localhost:8000/v1/cities?type=hot").then((res) => {
                 //  console.log(res.body)
