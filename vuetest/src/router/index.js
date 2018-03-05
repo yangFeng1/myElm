@@ -4,7 +4,8 @@ import home from '../page/home.vue'
 import city from '../page/city.vue'
 import index from '../page/index.vue'
 import food from '../page/food.vue'
-import shop from '../page/shop.vue'
+import shop from '../page/shop/shop.vue'
+import comment from '../page/shop/comment.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +26,10 @@ export default new Router({
         component: food
     }, {
         path: '/shop',
-        component: shop
+        component: shop,
+        children:[{
+            path:'/shop/comment',
+            component:comment
+        }]
     }]
 })
