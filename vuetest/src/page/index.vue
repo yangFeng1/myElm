@@ -15,7 +15,7 @@
             <div class="swiper-wrapper Carousel">
                 <div class="swiper-slide first">
                     <ul>
-                        <router-link v-for="item in navDataFirst"  :to="{path:'food',query:{foodName:item.title}}"   >
+                        <router-link v-for="item in navDataFirst"  :to="{path:'food',query:{foodName:item.title}}">
                                 <li>
                                         <img :src="'https://fuss10.elemecdn.com'+item.image_url"  alt="">
                                         <p>{{item.title}}</p>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="swiper-slide second">
                         <ul>
-                                <router-link v-for="item in navDataSecond"  :to="{path:'food',query:{foodName:item.title}}"   >
+                                <router-link v-for="item in navDataSecond"  :to="{path:'food',query:{foodName:item.title}}">
                                 <li >
                                     <img :src="'https://fuss10.elemecdn.com'+item.image_url"  alt="">
                                     <p>{{item.title}}</p>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="top">
-            <span class="callback_left fl"><</span>
+            <router-link to="/index"><span class="callback_left fl"><</span></router-link> 
             <span class="callback_right fr">></span>
             <img src="http://cangdu.org:8001/img/16018a5c08533.jpeg" alt="" class="fl">
             <h4>演示效果</h4>
@@ -11,12 +11,15 @@
         </div>
         <div class="chose">
             <span>商品</span>
-            <span>评论</span>
+           <router-link to="/shop/comment"> <span>评论</span></router-link>
         </div>
          <router-view></router-view>
     </div>
 </template>
 <style lang="scss" scoped>
+    .active{
+        color: #3190e8;
+    }
     .top {
         color:#fff;
          padding:10px;
@@ -62,5 +65,14 @@
     }
 </style>
 <script>
-    export default {}
+    export default {
+        data(){
+            return{}
+        },
+         methods: {
+            callback() {
+                this.$router.back(-1)
+            }
+        }
+    }
 </script>
