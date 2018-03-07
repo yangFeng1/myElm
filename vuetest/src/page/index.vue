@@ -7,8 +7,6 @@
                 <svg class="icon fr" aria-hidden="true">
                         <use xlink:href="#icon-my"></use>
                 </svg>
-
-
                 <p>福田地铁站</p>
         </div>
         <div class="swiper-container content">
