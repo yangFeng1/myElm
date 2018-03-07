@@ -3,7 +3,7 @@
         <div class="merchant">
                 <h4>附近商家</h4>
                 <ul>
-               <router-link v-for="item in merchant"  :to="{path:'shop'}" >
+               <router-link v-for="item in merchant"  :to="{path:'shop',query:{id:item.id}}" >
                     <li >
                         <img :src="'http://cangdu.org:8001/img/'+item.image_path" alt="" class="fl">
                         <div class="right fl">
@@ -13,7 +13,7 @@
                         </div>
                     </li>
                 </router-link>
-                    
+
                 </ul>
         </div>
     </div>

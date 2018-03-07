@@ -7,8 +7,8 @@
                 <svg class="icon fr" aria-hidden="true">
                         <use xlink:href="#icon-my"></use>
                 </svg>
-                
-               
+
+
                 <p>福田地铁站</p>
         </div>
         <div class="swiper-container content">
@@ -21,7 +21,7 @@
                                         <p>{{item.title}}</p>
                                     </li>
                         </router-link>
-                       
+
                     </ul>
                 </div>
                 <div class="swiper-slide second">
@@ -33,15 +33,15 @@
                                 </li>
                             </router-link>
                             </ul>
-                        
+
                 </div>
             </div>
         </div>
-        
+
         <commodityList></commodityList>
         <myFoot></myFoot>
     </div>
-    
+
 </template>
 <script>
     import '../common/js/iconfont.js';
@@ -81,7 +81,7 @@
         padding-top: 45px;
         padding-bottom: 45px;
     }
-    
+
     .top {
         height: 45px;
         background: #3190e8;
@@ -109,13 +109,13 @@
             font-size: 18px;
         }
     }
-    
+
     .content {
         height: 210px;
         width: 100%;
         border-bottom: 1px solid #e4e4e4
     }
-    
+
     .Carousel {
         height: 210px;
         width: 100%;
@@ -145,6 +145,6 @@
             background: #fff;
         }
     }
-    
+
     @import 'swiper/dist/css/swiper.min.css';
 </style>

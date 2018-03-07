@@ -6,6 +6,7 @@ import index from '../page/index.vue'
 import food from '../page/food.vue'
 import shop from '../page/shop/shop.vue'
 import comment from '../page/shop/comment.vue'
+import shopping from '../page/shop/shopping.vue'
 // const comments = r => require.ensure([], () => r(require('../page/shop/comment.vue')), '')
 Vue.use(Router)
 
@@ -31,6 +32,12 @@ export default new Router({
         children: [{
             path: '/shop/comment',
             component: comment
+        },{
+            path: '/shop/shopping',
+            component: shopping
+        },{
+            path: '/shop',
+            component: shopping
         }]
     }]
 })
