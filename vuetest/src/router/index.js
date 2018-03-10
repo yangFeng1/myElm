@@ -7,6 +7,8 @@ import food from '../page/food.vue'
 import shop from '../page/shop/shop.vue'
 import comment from '../page/shop/comment.vue'
 import shopping from '../page/shop/shopping.vue'
+import scroll from '../page/scroll.vue'
+import commodityList from '../components/commodityList.vue'
 // const comments = r => require.ensure([], () => r(require('../page/shop/comment.vue')), '')
 Vue.use(Router)
 
@@ -14,6 +16,12 @@ export default new Router({
     routes: [{
         path: '/home',
         component: home
+    },{
+         path: '/scroll',
+          component: scroll
+    },{
+         path: '/commodityList',
+          component: commodityList
     }, {
         path: '',
         component: home

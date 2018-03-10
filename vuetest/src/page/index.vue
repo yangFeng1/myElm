@@ -9,6 +9,8 @@
                 </svg>
                 <p>福田地铁站</p>
         </div>
+        
+            <iscroll-view  ref="iscroll" class="scroll-view" @scrollEnd="log">
         <div class="swiper-container content">
             <div class="swiper-wrapper Carousel">
                 <div class="swiper-slide first">
@@ -31,19 +33,20 @@
                                 </li>
                             </router-link>
                             </ul>
-
                 </div>
             </div>
         </div>
-
+       
+        
         <commodityList></commodityList>
+            </iscroll-view>
+      <div class="roctet" @click="scrollToTop" v-if='roctet'>火箭</div>
         <myFoot></myFoot>
     </div>
 
 </template>
 <script>
     import '../common/js/iconfont.js';
-    // import Swiper from '../common/js/swiper.js';
     import Swiper from 'swiper';
     import myFoot from '../components/myFoot.vue';
     import commodityList from '../components/commodityList.vue';
@@ -52,7 +55,8 @@
             return {
                 navDataFirst: [],
                 navDataSecond: [],
-                merchant: []
+                merchant: [],
+                roctet:true
             }
         },
         components: {
@@ -71,10 +75,53 @@
             new Swiper('.swiper-container', {
                 // autoplay: true, //可选选项，自动滑动
             })
+           
+        },
+        methods:{
+             scrollToTop () {
+              const iscroll = this.$refs.iscroll
+              console.log(iscroll)
+               iscroll.refresh()
+              iscroll.scrollTo(0, 0, 400)
+              iscroll.refresh()
+            },
+             log (iscroll) {
+              // console.log(iscroll);
+               if(iscroll.y < -100){
+                this._data.roctet = true;
+               }else{
+                this._data.roctet = false;
+               }
+               // console.log(this._data.roctet)
+            }
         }
     }
 </script>
 <style lang="scss" scoped>
+    .scroll-view {
+      /* -- Attention: This line is extremely important in chrome 55+! -- */
+      touch-action: none;
+      /* -- Attention-- */
+      position: fixed;  
+      top: 40px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    .roctet{
+        width:50px;
+        height:50px;
+        border-radius:50px;
+        border:1px solid #888;
+        position:fixed;
+        bottom:80px;
+        right:30px;
+        z-index:99999;
+        line-height: 50px;
+        text-align: center;
+        background: #999;
+    }
     #index {
         padding-top: 45px;
         padding-bottom: 45px;

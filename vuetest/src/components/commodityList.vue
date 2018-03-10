@@ -1,9 +1,13 @@
 <template>
-    <div>
-        <div class="merchant">
+<div>
+   <!-- <iscroll-view  ref="iscroll" class="scroll-view"> -->
+        <div class="merchant clear">
+
+
                 <h4>附近商家</h4>
+                   
                 <ul>
-               <router-link v-for="item in merchant"  :to="{path:'shop',query:{id:item.id}}" >
+               <router-link v-for="item in merchant"  :to="{path:'shop',query:{id:item.id}}">
                     <li >
                         <img :src="'http://cangdu.org:8001/img/'+item.image_path" alt="" class="fl">
                         <div class="right fl">
@@ -15,8 +19,12 @@
                 </router-link>
 
                 </ul>
+                
+                    
         </div>
-    </div>
+       <!-- </iscroll-view> -->
+          <!-- <div class="roctet" @click="scrollToTop"></div> -->
+     </div>   
 </template>
 <script>
     export default {
@@ -37,19 +45,58 @@
                 console.log(res.body)
                 this._data.merchant = res.body
             })
+        },
+        methods:{
+             scrollToTop () {
+
+              const iscroll = this.$refs.iscroll;
+              iscroll.refresh();
+              // iscroll.scrollTo(110, 110, 3000);
+              iscroll.refresh();
+            },
+             log (iscroll) {
+              // console.log(iscroll);
+            }
         }
     }
 </script>
 <style lang="scss" scoped>
+.roctet{
+        width:50px;
+        height:50px;
+        border-radius:50px;
+        border:1px solid #888;
+        position:fixed;
+        bottom:80px;
+        right:30px;
+        z-index:99999;
+    }
+.scroll-view {
+      /* -- Attention: This line is extremely important in chrome 55+! -- */
+      touch-action: none;
+      /* -- Attention-- */
+      position: fixed;
+      top: 260px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
     .merchant {
         margin-top: 10px;
         background: #fff;
         border-top: 1px solid #e4e4e4;
-        padding: 10px 0px 0px 10px;
+        padding: 10px 0px 40px 10px;
+        /*position: absolute;*/
+        /*height:500px;*/
+        /*overflow-y: scroll;*/
         h4 {
             font-size: 14px;
             color: #999;
             margin-left: 20px;
+        }
+        ul{
+            background: #fff;
         }
         li {
             height: 105px;
