@@ -10,7 +10,7 @@
                 <p>福田地铁站</p>
         </div>
         
-            <iscroll-view  ref="iscroll" class="scroll-view" @scrollEnd="log">
+            <iscroll-view  ref="iscroll" class="scroll-view" @scroll="log">
         <div class="swiper-container content">
             <div class="swiper-wrapper Carousel">
                 <div class="swiper-slide first">
@@ -80,8 +80,8 @@
         methods:{
              scrollToTop () {
               const iscroll = this.$refs.iscroll
+              console.log(this)
               console.log(iscroll)
-               iscroll.refresh()
               iscroll.scrollTo(0, 0, 400)
               iscroll.refresh()
             },
